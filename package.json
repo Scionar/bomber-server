@@ -1,0 +1,24 @@
+{
+  "name": "bomber-server",
+  "version": "1.0.0",
+  "description": "## Build server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scionar/bomber-server.git"
+  },
+  "author": "Joona Viertola",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Scionar/bomber-server/issues"
+  },
+  "homepage": "https://github.com/Scionar/bomber-server#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "jest": "^22.3.0"
+  }
+}
