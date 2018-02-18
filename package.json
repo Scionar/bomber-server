@@ -7,7 +7,8 @@
     "start": "node server.js",
     "test": "jest --all",
     "watch-tests": "jest --watch --coverage",
-    "prepush": "CI=true npm run test"
+    "prepush": "CI=true npm run test && npm run lint",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,11 @@
     "husky": "^0.14.3",
     "jest": "^22.3.0",
     "supertest": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.0",
+    "eslint-plugin-jest": "^21.12.2",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.10.2"
   }
 }
