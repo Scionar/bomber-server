@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "jest -o",
-    "watch-tests": "jest --watch --coverage"
+    "test": "jest --all",
+    "watch-tests": "jest --watch --coverage",
+    "prepush": "CI=true npm run test"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/Scionar/bomber-server#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "husky": "^0.14.3",
     "jest": "^22.3.0",
     "supertest": "^3.0.0"
   }
