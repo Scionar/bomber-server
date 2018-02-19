@@ -1,10 +1,12 @@
+const uuidv1 = require('uuid/v1');
 const initialState = [];
 let idIndex = 0;
 
 const players = (state = initialState, action) => {
   switch (action.type) {
     case 'CREATE_PLAYER': {
-      const newState = [...state, { id: idIndex, name: action.name }];
+      const auth = uuidv1();
+      const newState = [...state, { id: idIndex, name: action.name, auth }];
       idIndex++;
       return newState;
     }

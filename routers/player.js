@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const actions = require('../actions');
 const store = require('../store');
+const authentication = require('../helpers/authentication');
 
 router.use(express.json());
 
@@ -15,7 +16,7 @@ router.post('/', function(req, res) {
 
   res.status(200).json({
     id: player.id,
-    auth: 1312213123
+    auth: authentication.hash(player.auth)
   });
 });
 

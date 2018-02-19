@@ -7,7 +7,7 @@ Returns board status as JSON data.
 * **Method:**
   `GET`
 *  **URL Params**
-   None
+  None
 * **Data Params**
   None
 * **Success Response:**

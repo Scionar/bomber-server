@@ -11,7 +11,9 @@ describe('Action creators', () => {
 
   test('createPlayer creates player to state', () => {
     store.dispatch(actions.createPlayer('Tester'));
-    expect(store.getState().players).toContainEqual({ id: 0, name: 'Tester' });
+    expect(store.getState().players[0]).toHaveProperty('id', 0);
+    expect(store.getState().players[0]).toHaveProperty('name', 'Tester');
+    expect(store.getState().players[0]).toHaveProperty('auth');
   });
 
   test('deletePlayer should create REMOVE_PLAYER action with given id property', () => {
