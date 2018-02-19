@@ -7,5 +7,10 @@ module.exports = {
   removePlayer: id => ({
     type: 'REMOVE_PLAYER',
     id
+  }),
+
+  setBoard: layout => ({
+    type: 'SET_BOARD',
+    layout
   })
 };

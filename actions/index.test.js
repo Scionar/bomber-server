@@ -30,4 +30,26 @@ describe('Action creators', () => {
       name: 'Tester'
     });
   });
+
+  test('setBoard should create SET_BOARD action with given board layout', () => {
+    const boardLayout = {
+      height: 4,
+      width: 3,
+      cells: [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0]
+    };
+    expect(actions.setBoard(boardLayout)).toEqual({
+      type: 'SET_BOARD',
+      layout: boardLayout
+    });
+  });
+
+  test('setBoard sets right board layout to state', () => {
+    const boardLayout = {
+      height: 4,
+      width: 3,
+      cells: [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0]
+    };
+    store.dispatch(actions.setBoard(boardLayout));
+    expect(store.getState().board).toEqual(boardLayout);
+  });
 });
