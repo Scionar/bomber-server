@@ -1,11 +1,11 @@
 module.exports = {
-  createUser: name => ({
-    type: 'CREATE_USER',
+  createPlayer: name => ({
+    type: 'CREATE_PLAYER',
     name
   }),
 
-  removeUser: id => ({
-    type: 'REMOVE_USER',
+  removePlayer: id => ({
+    type: 'REMOVE_PLAYER',
     id
   })
 };
