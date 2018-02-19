@@ -1,6 +1,6 @@
 const store = require('./store');
 
-describe('Test statehandler', () => {
+describe('Statehandler', () => {
   test('It returns state', () => {
     expect(typeof store.getState()).toBe('object');
   });
