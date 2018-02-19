@@ -11,3 +11,22 @@ describe('Test root path', () => {
       });
   });
 });
+
+describe('Test /player path', () => {
+  test('/player with post request should response', done => {
+    request(app)
+      .post('/player')
+      .send({
+        name: 'Mary'
+      })
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .then(response => {
+        expect(response.statusCode).toBe(200);
+        const responseBody = response.body;
+        expect(responseBody).toHaveProperty('id');
+        expect(responseBody).toHaveProperty('auth');
+        done();
+      });
+  });
+});
