@@ -1,10 +1,11 @@
+const boardValidation = require('../helpers/boardValidation');
 const initialState = {};
 
 const board = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_BOARD': {
-      const newState = action.layout;
-      return { ...newState };
+      if (boardValidation(action.layout)) return { ...action.layout };
+      return state;
     }
     default:
       return state;

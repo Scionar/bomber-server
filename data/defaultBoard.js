@@ -197,5 +197,11 @@ module.exports = {
     1,
     1,
     1
+  ],
+  startPoints: [
+    { y: 2, x: 2 },
+    { y: 2, x: 14 },
+    { y: 12, x: 2 },
+    { y: 12, x: 14 }
   ]
 };
