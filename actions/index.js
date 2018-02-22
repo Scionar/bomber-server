@@ -4,6 +4,13 @@ module.exports = {
     name
   }),
 
+  setPlayerPosition: (id, y, x) => ({
+    type: 'SET_PLAYER_POSITION',
+    id,
+    y,
+    x
+  }),
+
   removePlayer: id => ({
     type: 'REMOVE_PLAYER',
     id

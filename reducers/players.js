@@ -10,6 +10,13 @@ const players = (state = initialState, action) => {
       idIndex++;
       return newState;
     }
+    case 'SET_PLAYER_POSITION': {
+      return state.map(current => {
+        if (current.id === action.id)
+          current.position = { y: action.y, x: action.x };
+        return current;
+      });
+    }
     case 'REMOVE_PLAYER': {
       const newPlayers = state.filter(current => current.id !== action.id);
       return [...newPlayers];

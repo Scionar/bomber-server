@@ -1,7 +1,5 @@
 const request = require('supertest');
 const app = require('./app');
-const store = require('./store');
-const authentication = require('./helpers/authentication');
 
 describe('Test root path', () => {
   test('It should response to GET request', done => {

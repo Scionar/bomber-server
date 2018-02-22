@@ -18,6 +18,36 @@ describe('Players reducer', () => {
     expect(playersReducer(state, action)[1]).toHaveProperty('name', 'John');
   });
 
+  test('SET_PLAYER_POSITION sets position for given player by id', () => {
+    const state = [{ id: 0, name: 'Mary' }];
+    const action = {
+      type: 'SET_PLAYER_POSITION',
+      id: 0,
+      y: 1,
+      x: 2
+    };
+
+    expect(playersReducer(state, action)[0]).toHaveProperty(
+      'position',
+      expect.objectContaining({
+        x: expect.any(Number),
+        y: expect.any(Number)
+      })
+    );
+  });
+
+  test('SET_PLAYER_POSITION does not set id for other players', () => {
+    const state = [{ id: 0, name: 'Mary' }];
+    const action = {
+      type: 'SET_PLAYER_POSITION',
+      id: 9,
+      y: 1,
+      x: 2
+    };
+
+    expect(playersReducer(state, action)[0]).not.toHaveProperty('position');
+  });
+
   test('REMOVE_PLAYER removes player from state', () => {
     const state = [{ id: 0, name: 'Mary' }];
     const action = {

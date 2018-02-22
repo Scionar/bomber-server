@@ -12,9 +12,13 @@ describe('Start game event', () => {
     store.dispatch(actions.createPlayer('John'));
     startGame();
     store.getState().players.forEach(current => {
-      expect(current).toHaveProperty('position');
-      expect(current.position).toHaveProperty('y');
-      expect(current.position).toHaveProperty('x');
+      expect(current).toHaveProperty(
+        'position',
+        expect.objectContaining({
+          x: expect.any(Number),
+          y: expect.any(Number)
+        })
+      );
     });
   });
 });
