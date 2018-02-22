@@ -31,4 +31,16 @@ describe('Action creators', () => {
       layout: data.defaultBoard
     });
   });
+
+  test('startGame should create START_GAME action', () => {
+    expect(actions.startGame()).toEqual({
+      type: 'START_GAME'
+    });
+  });
+
+  test('stopGame should create STOP_GAME action', () => {
+    expect(actions.stopGame()).toEqual({
+      type: 'STOP_GAME'
+    });
+  });
 });

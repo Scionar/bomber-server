@@ -13,4 +13,7 @@ module.exports = () => {
     const x = state.board.startPoints[index].x;
     store.dispatch(actions.setPlayerPosition(current.id, y, x));
   });
+
+  // Set game status running
+  store.dispatch(actions.startGame());
 };

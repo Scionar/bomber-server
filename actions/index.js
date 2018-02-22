@@ -19,5 +19,13 @@ module.exports = {
   setBoard: layout => ({
     type: 'SET_BOARD',
     layout
+  }),
+
+  startGame: () => ({
+    type: 'START_GAME'
+  }),
+
+  stopGame: () => ({
+    type: 'STOP_GAME'
   })
 };

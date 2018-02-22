@@ -21,4 +21,9 @@ describe('Start game event', () => {
       );
     });
   });
+
+  test('Status running is set true', () => {
+    startGame();
+    expect(store.getState().status.running).toBeTruthy();
+  });
 });
