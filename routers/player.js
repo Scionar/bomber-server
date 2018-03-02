@@ -1,14 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const actions = require('../actions');
 const store = require('../store');
 const authentication = require('../helpers/authentication');
-
-router.use(express.json());
+const events = require('../events');
 
 router.post('/', function(req, res) {
   const name = req.body.name;
-  store.dispatch(actions.createPlayer(name));
+  events.addPlayer(name);
 
   const player = store
     .getState()

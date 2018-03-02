@@ -2,7 +2,7 @@
 
 ## Register user
 Add user into game. Get auth credential as response.
-* URL: `/user`
+* URL: `/player`
 * Method: `POST`
 * URL Params: None
 * Data Params:
