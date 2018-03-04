@@ -30,9 +30,9 @@ Add user into game. Get auth credential as response.
     ```
 
 ## Move user up
-Add user into game. Get auth credential as response.
-* URL: `/user/{id}/up`
-* Method: `POST`
+Move user up at board.
+* URL: `/player/{id}/up`
+* Method: `PUT`
 * URL Params: None
 * Data Params:
   ```
@@ -48,7 +48,7 @@ Add user into game. Get auth credential as response.
     Content:
     ```
     {
-      error: "Wall on way."
+      error: "Wall on the way."
     }
     ```
   * Code: 401 UNAUTHORIZED<br />

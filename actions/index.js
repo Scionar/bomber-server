@@ -27,5 +27,10 @@ module.exports = {
 
   stopGame: () => ({
     type: 'STOP_GAME'
+  }),
+
+  movePlayerUp: id => ({
+    type: 'MOVE_PLAYER_UP',
+    id
   })
 };

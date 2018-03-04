@@ -43,4 +43,11 @@ describe('Action creators', () => {
       type: 'STOP_GAME'
     });
   });
+
+  test('movePlayerUp should create MOVE_PLAYER_UP action with player ID', () => {
+    expect(actions.movePlayerUp(1)).toEqual({
+      type: 'MOVE_PLAYER_UP',
+      id: 1
+    });
+  });
 });

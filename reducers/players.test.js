@@ -56,4 +56,16 @@ describe('Players reducer', () => {
     };
     expect(playersReducer(state, action).length).toBe(0);
   });
+
+  test("MOVE_PLAYER_UP decrease user's y position by one", () => {
+    const state = [
+      { id: 0, name: 'Mary', position: { y: 1, x: 1 } },
+      { id: 1, name: 'John', position: { y: 1, x: 1 } }
+    ];
+    const action = {
+      type: 'MOVE_PLAYER_UP',
+      id: 0
+    };
+    expect(playersReducer(state, action)[0].position.y).toBe(0);
+  });
 });

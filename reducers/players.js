@@ -21,6 +21,17 @@ const players = (state = initialState, action) => {
       const newPlayers = state.filter(current => current.id !== action.id);
       return [...newPlayers];
     }
+    case 'MOVE_PLAYER_UP': {
+      return state.map(current => {
+        if (current.id === action.id) {
+          return {
+            ...current,
+            position: { ...current.position, y: current.position.y - 1 }
+          };
+        }
+        return current;
+      });
+    }
     default:
       return state;
   }
