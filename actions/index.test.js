@@ -50,4 +50,10 @@ describe('Action creators', () => {
       id: 1
     });
   });
+
+  test('reset should create RESET action', () => {
+    expect(actions.reset()).toEqual({
+      type: 'RESET'
+    });
+  });
 });

@@ -18,4 +18,19 @@ router.post('/', function(req, res) {
   });
 });
 
+router.post('/:id/up', function(req, res) {
+  const id = parseInt(req.params.id);
+  const requestAuth = req.body.auth;
+  const playerAuth = store
+    .getState()
+    .players.filter(current => current.id === id)[0].auth;
+
+  if (!authentication.check(playerAuth, requestAuth)) {
+    res.status(401).send();
+  } else {
+    events.movePlayerUp(id);
+    res.status(200).send();
+  }
+});
+
 module.exports = router;

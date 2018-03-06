@@ -1,4 +1,5 @@
 const store = require('./store');
+const actions = require('./actions');
 
 // Mock console log
 global.console = { log: jest.fn() };
@@ -25,5 +26,28 @@ describe('Statehandler', () => {
     store.dispatch({ type: 'TEST' });
     expect(console.log.mock.calls.length).toBe(1);
     console.log.mockClear();
+  });
+
+  test('Reset state with RESET action', () => {
+    // Set data
+    store.dispatch(actions.createPlayer('Tero'));
+    store.dispatch(
+      actions.setBoard({
+        height: 2,
+        width: 2,
+        cells: [1, 1, 1, 1],
+        startPoints: [{ y: 0, x: 0 }, { y: 1, x: 1 }]
+      })
+    );
+    store.dispatch(actions.startGame());
+
+    store.dispatch(actions.reset());
+    expect(store.getState()).toEqual(
+      expect.objectContaining({
+        board: {},
+        players: [],
+        status: { running: false }
+      })
+    );
   });
 });

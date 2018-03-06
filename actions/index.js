@@ -32,5 +32,9 @@ module.exports = {
   movePlayerUp: id => ({
     type: 'MOVE_PLAYER_UP',
     id
+  }),
+
+  reset: () => ({
+    type: 'RESET'
   })
 };
