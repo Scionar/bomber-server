@@ -9,7 +9,7 @@ const movePlayer = require('../events/movePlayer');
 const data = require('../data');
 
 describe('Player route', () => {
-  describe('Move up', () => {
+  describe('Move', () => {
     let auth;
     let userId;
 
@@ -23,15 +23,58 @@ describe('Player route', () => {
       movePlayer.mockClear();
     });
 
-    test('/player/:id/move/up returns 200 with right auth and calls events.movePlayer once', done => {
+    test('/player/:id/move/up returns 200 with right auth and calls events.movePlayer', done => {
+      const direction = 'up';
       request(app)
-        .put(`/player/${userId}/move/up`)
+        .put(`/player/${userId}/move/${direction}`)
         .send({
           auth
         })
         .then(response => {
           expect(response.statusCode).toBe(200);
-          expect(movePlayer).toHaveBeenCalledTimes(1);
+          expect(movePlayer).toHaveBeenCalledWith(userId, direction);
+          done();
+        });
+    });
+
+    test('/player/:id/move/down returns 200 with right auth and calls events.movePlayer', done => {
+      const direction = 'down';
+      request(app)
+        .put(`/player/${userId}/move/${direction}`)
+        .send({
+          auth
+        })
+        .then(response => {
+          expect(response.statusCode).toBe(200);
+          expect(movePlayer).toHaveBeenCalledWith(userId, direction);
+          done();
+        });
+    });
+
+    test('/player/:id/move/left returns 200 with right auth and calls events.movePlayer', done => {
+      const direction = 'left';
+      request(app)
+        .put(`/player/${userId}/move/${direction}`)
+        .send({
+          auth
+        })
+        .then(response => {
+          expect(response.statusCode).toBe(200);
+          expect(movePlayer).toHaveBeenCalledWith(userId, direction);
+          done();
+        });
+    });
+
+    test('/player/:id/move/right returns 200 with right auth and calls events.movePlayer', done => {
+      const direction = 'right';
+      request(app)
+        .put(`/player/${userId}/move/${direction}`)
+        .send({
+          auth
+        })
+        .then(response => {
+          expect(response.statusCode).toBe(200);
+          expect(movePlayer).toHaveBeenCalledWith(userId, direction);
           done();
         });
     });
