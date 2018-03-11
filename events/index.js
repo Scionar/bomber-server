@@ -1,9 +1,9 @@
 const startGame = require('./startGame');
 const addPlayer = require('./addPlayer');
-const movePlayerUp = require('./movePlayerUp');
+const movePlayer = require('./movePlayer');
 
 module.exports = {
   startGame,
   addPlayer,
-  movePlayerUp
+  movePlayer
 };

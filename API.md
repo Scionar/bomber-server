@@ -29,9 +29,9 @@ Add user into game. Get auth credential as response.
     }
     ```
 
-## Move user up
+## Move user
 Move user up at board.
-* URL: `/player/{id}/up`
+* URL: `/player/{id}/move/{dir}`
 * Method: `PUT`
 * URL Params: None
 * Data Params:

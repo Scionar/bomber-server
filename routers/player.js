@@ -20,8 +20,9 @@ router.post('/', function(req, res) {
   });
 });
 
-router.post('/:id/up', function(req, res) {
+router.put('/:id/move/:dir', function(req, res) {
   const id = parseInt(req.params.id);
+  const direction = req.params.dir;
   const requestAuth = req.body.auth;
   const playerAuth = getPlayerWithId(id).auth;
   const gameRunState = store.getState().status.running;
@@ -32,12 +33,12 @@ router.post('/:id/up', function(req, res) {
     });
   } else if (!authentication.check(playerAuth, requestAuth)) {
     res.status(401).send();
-  } else if (!validateMove(id, 'up')) {
+  } else if (!validateMove(id, direction)) {
     res.status(422).json({
       error: 'Not valid move.'
     });
   } else {
-    events.movePlayerUp(id);
+    events.movePlayer(id, direction);
     res.status(200).send();
   }
 });
