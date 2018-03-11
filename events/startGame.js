@@ -4,7 +4,8 @@ const data = require('../data');
 
 module.exports = () => {
   // Set board
-  store.dispatch(actions.setBoard(data.defaultBoard));
+  const boardSet = store.getState().board.cells;
+  if (!boardSet) store.dispatch(actions.setBoard(data.defaultBoard));
 
   // Position players
   const state = store.getState();

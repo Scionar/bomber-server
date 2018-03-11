@@ -6,6 +6,7 @@ const authentication = require('../helpers/authentication');
 const events = require('../events');
 const actions = require('../actions');
 const movePlayerUp = require('../events/movePlayerUp');
+const data = require('../data');
 
 describe('Player route', () => {
   describe('Register', () => {
@@ -47,6 +48,7 @@ describe('Player route', () => {
     beforeEach(() => {
       store.dispatch(actions.reset());
       store.dispatch(actions.createPlayer('John'));
+      store.dispatch(actions.setBoard(data.openBoard));
       events.startGame();
       auth = authentication.hash(store.getState().players[0].auth);
       userId = store.getState().players[0].id;
@@ -74,6 +76,61 @@ describe('Player route', () => {
         })
         .then(response => {
           expect(response.statusCode).toBe(401);
+          expect(movePlayerUp).toHaveBeenCalledTimes(0);
+          done();
+        });
+    });
+
+    test('/player/:id/up returns 422 if game is not running and give informative message. Also does not call events.movePlayerUp', done => {
+      store.dispatch(actions.stopGame());
+      request(app)
+        .post(`/player/${userId}/up`)
+        .send({
+          auth
+        })
+        .then(response => {
+          expect(response.statusCode).toBe(422);
+          const responseBody = response.body;
+          expect(responseBody).toEqual(
+            expect.objectContaining({
+              error: expect.any(String)
+            })
+          );
+          expect(movePlayerUp).toHaveBeenCalledTimes(0);
+          done();
+        });
+    });
+  });
+
+  // Under own describe because setting closed board after gameStart() gives problems.
+  describe('Move up with wall on the way', () => {
+    let auth;
+    let userId;
+
+    beforeEach(() => {
+      store.dispatch(actions.reset());
+      store.dispatch(actions.createPlayer('John'));
+      store.dispatch(actions.setBoard(data.closedBoard));
+      events.startGame();
+      auth = authentication.hash(store.getState().players[0].auth);
+      userId = store.getState().players[0].id;
+      movePlayerUp.mockClear();
+    });
+
+    test('/player/:id/up returns 422 move collides', done => {
+      request(app)
+        .post(`/player/${userId}/up`)
+        .send({
+          auth
+        })
+        .then(response => {
+          expect(response.statusCode).toBe(422);
+          const responseBody = response.body;
+          expect(responseBody).toEqual(
+            expect.objectContaining({
+              error: expect.any(String)
+            })
+          );
           expect(movePlayerUp).toHaveBeenCalledTimes(0);
           done();
         });

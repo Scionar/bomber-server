@@ -52,4 +52,9 @@ Move user up at board.
     }
     ```
   * Code: 401 UNAUTHORIZED<br />
-    Content: None
+    Content:
+    ```
+    {
+      error: "Unauthorized request.."
+    }
+    ```
