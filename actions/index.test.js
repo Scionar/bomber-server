@@ -51,6 +51,13 @@ describe('Action creators', () => {
     });
   });
 
+  test('movePlayerDown should create MOVE_PLAYER_DOWN action with player ID', () => {
+    expect(actions.movePlayerDown(1)).toEqual({
+      type: 'MOVE_PLAYER_DOWN',
+      id: 1
+    });
+  });
+
   test('reset should create RESET action', () => {
     expect(actions.reset()).toEqual({
       type: 'RESET'

@@ -6,7 +6,14 @@ describe('Move player up event', () => {
   test('Calls movePlayerUp action creator with same id', () => {
     const id = 123;
     movePlayer(id, 'up');
-    expect(actions.movePlayerUp.mock.calls[0]).toEqual([id]);
+    expect(actions.movePlayerUp).toHaveBeenCalledWith(id);
+    actions.movePlayerUp.mockClear();
+  });
+
+  test('Calls movePlayerDown action creator with same id', () => {
+    const id = 123;
+    movePlayer(id, 'down');
+    expect(actions.movePlayerDown).toHaveBeenCalledWith(id);
     actions.movePlayerUp.mockClear();
   });
 

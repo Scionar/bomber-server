@@ -32,6 +32,17 @@ const players = (state = initialState, action) => {
         return current;
       });
     }
+    case 'MOVE_PLAYER_DOWN': {
+      return state.map(current => {
+        if (current.id === action.id) {
+          return {
+            ...current,
+            position: { ...current.position, y: current.position.y + 1 }
+          };
+        }
+        return current;
+      });
+    }
     default:
       return state;
   }

@@ -34,6 +34,11 @@ module.exports = {
     id
   }),
 
+  movePlayerDown: id => ({
+    type: 'MOVE_PLAYER_DOWN',
+    id
+  }),
+
   reset: () => ({
     type: 'RESET'
   })
