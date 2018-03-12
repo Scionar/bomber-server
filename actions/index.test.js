@@ -58,6 +58,20 @@ describe('Action creators', () => {
     });
   });
 
+  test('movePlayerLeft should create MOVE_PLAYER_LEFT action with player ID', () => {
+    expect(actions.movePlayerLeft(1)).toEqual({
+      type: 'MOVE_PLAYER_LEFT',
+      id: 1
+    });
+  });
+
+  test('movePlayerRight should create MOVE_PLAYER_RIGHT action with player ID', () => {
+    expect(actions.movePlayerRight(1)).toEqual({
+      type: 'MOVE_PLAYER_RIGHT',
+      id: 1
+    });
+  });
+
   test('reset should create RESET action', () => {
     expect(actions.reset()).toEqual({
       type: 'RESET'

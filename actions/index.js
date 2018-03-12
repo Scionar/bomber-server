@@ -39,6 +39,16 @@ module.exports = {
     id
   }),
 
+  movePlayerLeft: id => ({
+    type: 'MOVE_PLAYER_LEFT',
+    id
+  }),
+
+  movePlayerRight: id => ({
+    type: 'MOVE_PLAYER_RIGHT',
+    id
+  }),
+
   reset: () => ({
     type: 'RESET'
   })

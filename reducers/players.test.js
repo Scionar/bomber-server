@@ -80,4 +80,28 @@ describe('Players reducer', () => {
     };
     expect(playersReducer(state, action)[0].position.y).toBe(2);
   });
+
+  test("MOVE_PLAYER_LEFT decrease user's x position by one", () => {
+    const state = [
+      { id: 0, name: 'Mary', position: { y: 1, x: 1 } },
+      { id: 1, name: 'John', position: { y: 1, x: 1 } }
+    ];
+    const action = {
+      type: 'MOVE_PLAYER_LEFT',
+      id: 0
+    };
+    expect(playersReducer(state, action)[0].position.x).toBe(0);
+  });
+
+  test("MOVE_PLAYER_RIGHT increase user's x position by one", () => {
+    const state = [
+      { id: 0, name: 'Mary', position: { y: 1, x: 1 } },
+      { id: 1, name: 'John', position: { y: 1, x: 1 } }
+    ];
+    const action = {
+      type: 'MOVE_PLAYER_RIGHT',
+      id: 0
+    };
+    expect(playersReducer(state, action)[0].position.x).toBe(2);
+  });
 });

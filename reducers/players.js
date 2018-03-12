@@ -43,6 +43,28 @@ const players = (state = initialState, action) => {
         return current;
       });
     }
+    case 'MOVE_PLAYER_LEFT': {
+      return state.map(current => {
+        if (current.id === action.id) {
+          return {
+            ...current,
+            position: { ...current.position, x: current.position.x - 1 }
+          };
+        }
+        return current;
+      });
+    }
+    case 'MOVE_PLAYER_RIGHT': {
+      return state.map(current => {
+        if (current.id === action.id) {
+          return {
+            ...current,
+            position: { ...current.position, x: current.position.x + 1 }
+          };
+        }
+        return current;
+      });
+    }
     default:
       return state;
   }
